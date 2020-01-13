@@ -1,0 +1,20 @@
+﻿<Window x:Class="YihuiMgr.Test.WindowHtml"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YihuiMgr.Test"
+        xmlns:htmlEditor="clr-namespace:Smith.WPF.HtmlEditor;assembly=Smith.WPF.HtmlEditor"
+        xmlns:controls="clr-namespace:YihuiMgr.Controls"
+        mc:Ignorable="d"
+        Title="WindowHtml" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <controls:RichTextControl x:Name="HtmlEditor" Grid.Row="0" UploadType="CrowdFundImgDir" ></controls:RichTextControl>
+        <Button Content="ok" Grid.Row="1" Click="ButtonBase_OnClick"/>
+    </Grid>
+</Window>

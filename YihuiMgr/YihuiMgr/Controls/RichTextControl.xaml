@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="YihuiMgr.Controls.RichTextControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YihuiMgr.Controls"
+             xmlns:htmlEditor="clr-namespace:Smith.WPF.HtmlEditor;assembly=Smith.WPF.HtmlEditor"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <RadioButton Content="源码" x:Name="RadioButtonCode" Checked="ToggleButtonCode_OnChecked" IsChecked="True" Grid.Row="0"  Grid.Column="0" Visibility="Collapsed"/>
+        <RadioButton Content="预览" x:Name="RadioButtonWeb" Grid.Row="0" Checked="ToggleButtonWeb_OnChecked" Grid.Column="1" Visibility="Collapsed"/>
+        <htmlEditor:HtmlEditor x:Name="TextHtml" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="3" Style="{ StaticResource InputBox}" />
+        <WebBrowser x:Name="TextWebHtml" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Style="{ StaticResource InputBox}" Visibility="Collapsed"/>
+        <TextBlock Text="" x:Name="TextBlock"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xml>
+  <appid>wxf712e6b633657dfe</appid>
+  <body>测试商品</body>
+  <mch_id>1337484701</mch_id>
+  <nonce_str>
+    5b0fa0e4c041548bb6289e15d865a696
+  </nonce_str>
+  <notify_url>
+    http: //121.40.35.3/test
+  </notify_url>
+  <out_trade_no>6dfe08eda761bd321f8a9b239f6f4ec3</out_trade_no>
+  <spbill_create_ip>127.0.0.1</spbill_create_ip>
+  <total_fee>1</total_fee>
+  <trade_type>APP</trade_type>
+  <sign>C1806864D8AB74EA83A217B08A658F1F</sign>
+</xml>
+

@@ -1,0 +1,127 @@
+﻿<Window x:Class="YihuiMgr.UI.CrowFounding.AddCrowFoundWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YihuiMgr.UI.CrowFounding"
+        xmlns:controls="clr-namespace:YihuiMgr.Controls"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="添加众筹" Height="600" Width="800">
+
+    <Grid Background="{ StaticResource ThemeColorBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="众筹信息" Grid.Row="0" FontSize="15" Margin="8,8,8,0"  HorizontalAlignment="Center" FontWeight="Bold"/>
+        <TabControl Grid.Row="1" Background="{ StaticResource ThemeColorBrush}">
+            <TabItem Header="基础信息">
+                <Grid  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                       
+
+                    </Grid.RowDefinitions>
+                    <TextBlock  Text="众筹名称" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="0"/>
+                    <TextBox Grid.Row="0" x:Name="TextCrowName" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource InputBox}"/>
+
+                    <TextBlock Text="开始时间" Style="{ StaticResource InputLabel}"  Grid.Column="0"  Grid.Row="1"/>
+                    <xctk:DateTimePicker x:Name="TextBeginDate" FormatString="yyyy-MM-dd HH:mm:ss" Format="Custom"  Grid.Column="1" Grid.Row="1" Style="{StaticResource InputBox}"/>
+
+                    <TextBlock Text="结束时间" Style="{ StaticResource InputLabel}" Grid.Column="2"  Grid.Row="1"/>
+                    <xctk:DateTimePicker x:Name="TextEndDate" FormatString="yyyy-MM-dd HH:mm:ss" Format="Custom"  Grid.Column="3" Grid.Row="1" Style="{StaticResource InputBox}"/>
+
+                    <TextBlock Text="服务地点" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="2"/>
+                    <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <controls:CityControl x:Name="CityControl" Grid.Column="0"/>
+
+                        <TextBox x:Name="TextAddress"  Grid.Column="2" Style="{StaticResource InputBox}"/>
+                    </Grid>
+
+                    <TextBlock Text="艺术类别" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="3"/>
+
+                    <controls:ArtTypeControl x:Name="TextArtType"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
+                    <TextBlock Text="服务时长(分钟)"  Style="{ StaticResource InputLabel}" Grid.Row="4" Grid.Column="0" />
+                    <xctk:IntegerUpDown x:Name="TextServiceDuration" Grid.Row="4" Grid.Column="1" Style="{StaticResource InputBox}" />
+
+                    <TextBlock Text="服务艺人" Style="{ StaticResource InputLabel}" Grid.Column="2"  Grid.Row="4"/>
+            
+                    <controls:SelectUserControl x:Name="TextActor"  Grid.Column="3" Grid.Row="4"   Style="{StaticResource InputBox}"/>
+
+                    <TextBlock Text="服务时间" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="5"/>
+                    <xctk:DateTimePicker Format="Custom" x:Name="TextServiceTime" FormatString="yyyy-MM-dd HH:mm:ss"  Grid.Column="1" Grid.Row="5" Style="{StaticResource InputBox}"/>
+
+                    <TextBlock Text="服务费用" Style="{ StaticResource InputLabel}" Grid.Column="2"  Grid.Row="5"/>
+
+                    <xctk:DoubleUpDown x:Name="TextServiceCost"  FormatString="C2" CultureInfo="zh-CN"  Grid.Column="3" Grid.Row="5" Style="{StaticResource InputBox}"/>
+                    <TextBlock Text="注意事项" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="6"/>
+                    <controls:RichTextControl x:Name="TextNote" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" UploadType="CrowdFundImgDir"    Style="{StaticResource InputBox}"/>
+
+                    <TextBlock Text="封面图" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="7"/>
+                    <Grid Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <controls:UploadControl x:Name="TextFrontImg" Grid.Column="0" UploadType="CrowdFundImgDir" />
+
+                        <RadioButton Content="图片" x:Name="RadioButtonImg" VerticalAlignment="Center" Checked="ToggleButtonImg_OnChecked" IsChecked="True"  Grid.Column="1" />
+                        <RadioButton Content="视频" x:Name="RadioButtonVideo"  VerticalAlignment="Center" Margin="4,0,4,0" Checked="ToggleButtonVideo_OnChecked" Grid.Column="2"/>
+                    </Grid>
+
+
+                    <TextBlock Text="艺术标签" Style="{ StaticResource InputLabel}"  Grid.Column="0"  Grid.Row="8"/>
+                    <controls:ArtTagsControl x:Name="ArtTags"   Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="服务介绍">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="180"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="服务介绍" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="0"/>
+                    <controls:RichTextControl x:Name="TextServiceIntro" UploadType="CrowdFundImgDir"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Style="{ StaticResource InputBox}"/>
+
+                    <TextBlock Text="众筹详情" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="1"/>
+                    <controls:CrowFoundDetailControl x:Name="TextCrowDetail" Grid.Column="1" Grid.ColumnSpan="3"  Grid.Row="1" Style="{StaticResource InputBox}" />
+                </Grid>
+             
+            </TabItem>
+        </TabControl>
+
+        <Button Content="保存" x:Name="ButtonAdd" Click="ButtonAdd_OnClick" Width="60"  Grid.Row="2" HorizontalAlignment="Right" Margin="8,8,80,8"/>
+        <Button Content="取消" x:Name="ButtonCancel" Click="ButtonCancel_OnClick" Width="60"  Grid.Row="2" HorizontalAlignment="Right" Margin="8"/>
+
+    </Grid>
+</Window>

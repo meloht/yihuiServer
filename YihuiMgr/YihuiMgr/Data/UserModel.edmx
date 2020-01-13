@@ -1,0 +1,972 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="userModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="actor_requst">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_uid" Type="int" />
+          <Property Name="user_name" Type="varchar" MaxLength="20" />
+          <Property Name="career" Type="varchar" MaxLength="50" />
+          <Property Name="gender" Type="int" />
+          <Property Name="tel" Type="varchar" MaxLength="20" />
+          <Property Name="org" Type="varchar" MaxLength="100" />
+          <Property Name="experience" Type="varchar" MaxLength="2000" />
+          <Property Name="requst_time" Type="bigint" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="android_update">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="update_intro" Type="varchar" MaxLength="2000" />
+          <Property Name="version_no" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="version_id" Type="int" Nullable="false" />
+          <Property Name="update_url" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_time" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="fc_id" />
+          </Key>
+          <Property Name="fc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fc_name" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="category_second">
+          <Key>
+            <PropertyRef Name="cs_id" />
+          </Key>
+          <Property Name="cs_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cs_name" Type="varchar" MaxLength="20" />
+          <Property Name="fc_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category_third">
+          <Key>
+            <PropertyRef Name="ct_id" />
+          </Key>
+          <Property Name="ct_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ct_name" Type="varchar" MaxLength="20" />
+          <Property Name="cs_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cf_label">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cf_id" Type="int" Nullable="false" />
+          <Property Name="label_text" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="cf_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cf_id" Type="int" Nullable="false" />
+          <Property Name="cf_type_name" Type="varchar" MaxLength="60" />
+          <Property Name="cf_price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cf_cftype" Type="int" />
+          <Property Name="cf_amount" Type="int" />
+          <Property Name="left_amount" Type="int" Nullable="false" />
+          <Property Name="cf_desc" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="int" Nullable="false" />
+          <Property Name="city_name" Type="varchar" MaxLength="20" />
+          <Property Name="province_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="crowd_fund_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_uid" Type="int" Nullable="false" />
+          <Property Name="cf_id" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="crowd_funding">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cf_name" Type="varchar" MaxLength="60" />
+          <Property Name="cf_category" Type="int" />
+          <Property Name="cf_second_category" Type="int" />
+          <Property Name="cf_third_category" Type="int" />
+          <Property Name="cf_fund_end" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="cf_fund_amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="cf_begin_time" Type="bigint" />
+          <Property Name="cf_end_time" Type="bigint" />
+          <Property Name="cf_front_icon" Type="varchar" MaxLength="100" />
+          <Property Name="cf_video_thumbnail" Type="varchar" MaxLength="100" />
+          <Property Name="cf_front_icon_type" Type="int" />
+          <Property Name="cf_desc" Type="text" />
+          <Property Name="cf_note" Type="varchar" MaxLength="2000" />
+          <Property Name="cf_created_time" Type="bigint" />
+          <Property Name="cf_owner_id" Type="int" />
+          <Property Name="cf_province_id" Type="int" />
+          <Property Name="cf_city_id" Type="int" />
+          <Property Name="cf_service_address" Type="varchar" MaxLength="100" />
+          <Property Name="cf_service_time" Type="bigint" />
+          <Property Name="cf_service_duration" Type="int" />
+          <Property Name="cf_state" Type="int" />
+          <Property Name="support_amount" Type="int" Nullable="false" />
+          <Property Name="click_count" Type="int" Nullable="false" />
+          <Property Name="fav_count" Type="int" Nullable="false" />
+          <Property Name="order_count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="manager_user">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="create_time" Type="bigint" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="order_source" Type="int" Nullable="false" />
+          <Property Name="buyer_id" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="buyer" Type="varchar" MaxLength="45" />
+          <Property Name="buyer_info" Type="varchar" MaxLength="45" />
+          <Property Name="seller_id" Type="int" Nullable="false" />
+          <Property Name="seller" Type="varchar" MaxLength="45" />
+          <Property Name="product_name" Type="varchar" MaxLength="60" />
+          <Property Name="product_code" Type="varchar" MaxLength="45" />
+          <Property Name="service_time" Type="bigint" />
+          <Property Name="service_location" Type="varchar" MaxLength="100" />
+          <Property Name="create_time" Type="bigint" />
+          <Property Name="receive_time" Type="bigint" />
+          <Property Name="audit_time" Type="bigint" />
+          <Property Name="auditer" Type="varchar" MaxLength="45" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="paystatus" Type="int" Nullable="false" />
+          <Property Name="public_price" Type="decimal" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="pay_order_type" Type="int" />
+          <Property Name="pay_order_id" Type="varchar" MaxLength="45" />
+          <Property Name="merchant_code" Type="varchar" MaxLength="45" />
+          <Property Name="pay_time" Type="bigint" />
+          <Property Name="order_type" Type="int" Nullable="false" />
+          <Property Name="order_type_id" Type="int" Nullable="false" />
+          <Property Name="order_type_sub" Type="int" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="order_img" Type="varchar" MaxLength="100" />
+          <Property Name="service_endtime" Type="bigint" />
+        </EntityType>
+        <EntityType Name="province">
+          <Key>
+            <PropertyRef Name="province_id" />
+          </Key>
+          <Property Name="province_id" Type="int" Nullable="false" />
+          <Property Name="province_name" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="recommendation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="source_type" Type="int" Nullable="false" />
+          <Property Name="source_id" Type="int" Nullable="false" />
+          <Property Name="source_title" Type="varchar" MaxLength="60" />
+          <Property Name="icon" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="data_date" Type="date" Nullable="false" />
+          <Property Name="create_id" Type="int" />
+          <Property Name="create_time" Type="bigint" />
+          <Property Name="create_name" Type="varchar" MaxLength="45" />
+          <Property Name="modify_time" Type="bigint" />
+          <Property Name="modify_id" Type="int" />
+          <Property Name="modify_name" Type="varchar" MaxLength="45" />
+          <Property Name="order_index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="third_login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="share_id" Type="varchar" MaxLength="100" />
+          <Property Name="share_name" Type="varchar" MaxLength="20" />
+          <Property Name="user_uid" Type="int" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_base">
+          <Key>
+            <PropertyRef Name="user_uid" />
+          </Key>
+          <Property Name="user_uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="is_actor" Type="int" />
+          <Property Name="user_nick" Type="varchar" MaxLength="45" />
+          <Property Name="user_email" Type="varchar" MaxLength="45" />
+          <Property Name="user_pwd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="15" />
+          <Property Name="reg_time" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_uid" Type="int" Nullable="false" />
+          <Property Name="user_icon" Type="varchar" MaxLength="100" />
+          <Property Name="user_city_id" Type="int" />
+          <Property Name="user_birth" Type="date" />
+          <Property Name="user_career" Type="varchar" MaxLength="50" />
+          <Property Name="user_intro" Type="mediumtext" />
+          <Property Name="user_fronticon" Type="varchar" MaxLength="100" />
+          <Property Name="user_gender" Type="int" />
+          <Property Name="user_video" Type="varchar" MaxLength="100" />
+          <Property Name="click_count" Type="int" />
+        </EntityType>
+        <EntityType Name="user_label">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_uid" Type="int" Nullable="false" />
+          <Property Name="label_text" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="user_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_uid" Type="int" Nullable="false" />
+          <Property Name="arter" Type="int" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="45" />
+          <Property Name="password" Type="varchar" MaxLength="45" />
+          <Property Name="age" Type="int" />
+        </EntityType>
+        <EntityType Name="video_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="v_title" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="v_front_icon" Type="varchar" MaxLength="100" />
+          <Property Name="v_video_url" Type="varchar" MaxLength="100" />
+          <Property Name="v_brief" Type="varchar" MaxLength="100" />
+          <Property Name="v_detail_intro" Type="varchar" MaxLength="1000" />
+          <Property Name="v_duration" Type="int" />
+          <Property Name="v_category" Type="int" />
+          <Property Name="v_second_category" Type="int" />
+          <Property Name="v_third_category" Type="int" />
+          <Property Name="v_create_time" Type="bigint" Nullable="false" />
+          <Property Name="click_count" Type="int" />
+        </EntityType>
+        <EntityType Name="video_label">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="label_text" Type="varchar" MaxLength="30" />
+          <Property Name="v_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="video_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="v_id" Type="int" />
+          <Property Name="user_uid" Type="int" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="userModelStoreContainer">
+          <EntitySet Name="actor_requst" EntityType="Self.actor_requst" Schema="user" store:Type="Tables" />
+          <EntitySet Name="android_update" EntityType="Self.android_update" Schema="user" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="user" store:Type="Tables" />
+          <EntitySet Name="category_second" EntityType="Self.category_second" Schema="user" store:Type="Tables" />
+          <EntitySet Name="category_third" EntityType="Self.category_third" Schema="user" store:Type="Tables" />
+          <EntitySet Name="cf_label" EntityType="Self.cf_label" Schema="user" store:Type="Tables" />
+          <EntitySet Name="cf_type" EntityType="Self.cf_type" Schema="user" store:Type="Tables" />
+          <EntitySet Name="city" EntityType="Self.city" Schema="user" store:Type="Tables" />
+          <EntitySet Name="crowd_fund_relation" EntityType="Self.crowd_fund_relation" Schema="user" store:Type="Tables" />
+          <EntitySet Name="crowd_funding" EntityType="Self.crowd_funding" Schema="user" store:Type="Tables" />
+          <EntitySet Name="manager_user" EntityType="Self.manager_user" Schema="user" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="user" store:Type="Tables" />
+          <EntitySet Name="province" EntityType="Self.province" Schema="user" store:Type="Tables" />
+          <EntitySet Name="recommendation" EntityType="Self.recommendation" Schema="user" store:Type="Tables" />
+          <EntitySet Name="third_login" EntityType="Self.third_login" Schema="user" store:Type="Tables" />
+          <EntitySet Name="user_base" EntityType="Self.user_base" Schema="user" store:Type="Tables" />
+          <EntitySet Name="user_detail" EntityType="Self.user_detail" Schema="user" store:Type="Tables" />
+          <EntitySet Name="user_label" EntityType="Self.user_label" Schema="user" store:Type="Tables" />
+          <EntitySet Name="user_relation" EntityType="Self.user_relation" Schema="user" store:Type="Tables" />
+          <EntitySet Name="user_t" EntityType="Self.user_t" Schema="user" store:Type="Tables" />
+          <EntitySet Name="video_info" EntityType="Self.video_info" Schema="user" store:Type="Tables" />
+          <EntitySet Name="video_label" EntityType="Self.video_label" Schema="user" store:Type="Tables" />
+          <EntitySet Name="video_relation" EntityType="Self.video_relation" Schema="user" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="userModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="third_login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="share_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="share_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="user_uid" Type="Int32" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="user_base">
+          <Key>
+            <PropertyRef Name="user_uid" />
+          </Key>
+          <Property Name="user_uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="is_actor" Type="Int32" />
+          <Property Name="user_nick" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reg_time" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_label">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="user_uid" Type="Int32" Nullable="false" />
+          <Property Name="label_text" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_uid" Type="Int32" Nullable="false" />
+          <Property Name="arter" Type="Int32" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="userEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="third_login" EntityType="Self.third_login" />
+          <EntitySet Name="user_base" EntityType="Self.user_base" />
+          <EntitySet Name="user_label" EntityType="Self.user_label" />
+          <EntitySet Name="user_relation" EntityType="Self.user_relation" />
+          <EntitySet Name="category" EntityType="userModel.category" />
+          <EntitySet Name="category_second" EntityType="userModel.category_second" />
+          <EntitySet Name="category_third" EntityType="userModel.category_third" />
+          <EntitySet Name="city" EntityType="userModel.city" />
+          <EntitySet Name="province" EntityType="userModel.province" />
+          <EntitySet Name="cf_label" EntityType="userModel.cf_label" />
+          <EntitySet Name="video_label" EntityType="userModel.video_label" />
+          <EntitySet Name="user_t" EntityType="userModel.user_t" />
+          <EntitySet Name="crowd_fund_relation" EntityType="userModel.crowd_fund_relation" />
+          <EntitySet Name="user_detail" EntityType="userModel.user_detail" />
+          <EntitySet Name="cf_type" EntityType="userModel.cf_type" />
+          <EntitySet Name="video_info" EntityType="userModel.video_info" />
+          <EntitySet Name="video_relation" EntityType="userModel.video_relation" />
+          <EntitySet Name="manager_user" EntityType="userModel.manager_user" />
+          <EntitySet Name="actor_requst" EntityType="userModel.actor_requst" />
+          <EntitySet Name="crowd_funding" EntityType="userModel.crowd_funding" />
+          <EntitySet Name="order" EntityType="userModel.order" />
+          <EntitySet Name="android_update" EntityType="userModel.android_update" />
+          <EntitySet Name="recommendation" EntityType="userModel.recommendation" />
+        </EntityContainer>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="fc_id" />
+          </Key>
+          <Property Name="fc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fc_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="category_second">
+          <Key>
+            <PropertyRef Name="cs_id" />
+          </Key>
+          <Property Name="cs_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cs_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fc_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category_third">
+          <Key>
+            <PropertyRef Name="ct_id" />
+          </Key>
+          <Property Name="ct_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ct_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cs_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="Int32" Nullable="false" />
+          <Property Name="city_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="province_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="province">
+          <Key>
+            <PropertyRef Name="province_id" />
+          </Key>
+          <Property Name="province_id" Type="Int32" Nullable="false" />
+          <Property Name="province_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="cf_label">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cf_id" Type="Int32" Nullable="false" />
+          <Property Name="label_text" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="video_label">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="label_text" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="v_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+        </EntityType>
+        <EntityType Name="crowd_fund_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_uid" Type="Int32" Nullable="false" />
+          <Property Name="cf_id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_uid" Type="Int32" Nullable="false" />
+          <Property Name="user_icon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_city_id" Type="Int32" />
+          <Property Name="user_birth" Type="DateTime" />
+          <Property Name="user_career" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_intro" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="user_fronticon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_gender" Type="Int32" />
+          <Property Name="user_video" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="click_count" Type="Int32" />
+        </EntityType>
+        <EntityType Name="cf_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cf_id" Type="Int32" Nullable="false" />
+          <Property Name="cf_type_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="cf_price" Type="Decimal" />
+          <Property Name="cf_cftype" Type="Int32" />
+          <Property Name="cf_amount" Type="Int32" />
+          <Property Name="cf_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="left_amount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="video_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="v_title" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="v_front_icon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="v_video_url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="v_brief" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="v_detail_intro" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="v_duration" Type="Int32" />
+          <Property Name="v_category" Type="Int32" />
+          <Property Name="v_second_category" Type="Int32" />
+          <Property Name="v_third_category" Type="Int32" />
+          <Property Name="v_create_time" Type="Int64" Nullable="false" />
+          <Property Name="click_count" Type="Int32" />
+        </EntityType>
+        <EntityType Name="video_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="v_id" Type="Int32" />
+          <Property Name="user_uid" Type="Int32" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="manager_user">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="create_time" Type="Int64" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="actor_requst">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_uid" Type="Int32" />
+          <Property Name="career" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="Int32" />
+          <Property Name="tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="org" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="experience" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="requst_time" Type="Int64" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="user_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="crowd_funding">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cf_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="cf_category" Type="Int32" />
+          <Property Name="cf_second_category" Type="Int32" />
+          <Property Name="cf_third_category" Type="Int32" />
+          <Property Name="cf_fund_end" Type="Decimal" Nullable="false" />
+          <Property Name="cf_fund_amount" Type="Decimal" Nullable="false" />
+          <Property Name="cf_begin_time" Type="Int64" />
+          <Property Name="cf_end_time" Type="Int64" />
+          <Property Name="cf_front_icon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cf_video_thumbnail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cf_front_icon_type" Type="Int32" />
+          <Property Name="cf_desc" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="cf_note" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="cf_created_time" Type="Int64" />
+          <Property Name="cf_owner_id" Type="Int32" />
+          <Property Name="cf_province_id" Type="Int32" />
+          <Property Name="cf_city_id" Type="Int32" />
+          <Property Name="cf_service_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cf_service_time" Type="Int64" />
+          <Property Name="cf_service_duration" Type="Int32" />
+          <Property Name="cf_state" Type="Int32" />
+          <Property Name="support_amount" Type="Int32" Nullable="false" />
+          <Property Name="click_count" Type="Int32" Nullable="false" />
+          <Property Name="fav_count" Type="Int32" Nullable="false" />
+          <Property Name="order_count" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="order_source" Type="Int32" Nullable="false" />
+          <Property Name="buyer_id" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="buyer" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="seller_id" Type="Int32" Nullable="false" />
+          <Property Name="seller" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="order_type" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="product_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="service_time" Type="Int64" />
+          <Property Name="service_location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="create_time" Type="Int64" />
+          <Property Name="receive_time" Type="Int64" />
+          <Property Name="audit_time" Type="Int64" />
+          <Property Name="auditer" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="paystatus" Type="Int32" Nullable="false" />
+          <Property Name="public_price" Type="Decimal" Nullable="false" />
+          <Property Name="price" Type="Decimal" Nullable="false" />
+          <Property Name="pay_order_type" Type="Int32" />
+          <Property Name="pay_order_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="merchant_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pay_time" Type="Int64" />
+          <Property Name="buyer_info" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="order_type_id" Type="Int32" Nullable="false" />
+          <Property Name="order_type_sub" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="order_img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="service_endtime" Type="Int64" />
+        </EntityType>
+        <EntityType Name="android_update">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="update_intro" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="version_no" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="update_url" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="create_time" Type="Int64" Nullable="false" />
+          <Property Name="version_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="recommendation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="source_type" Type="Int32" Nullable="false" />
+          <Property Name="source_id" Type="Int32" Nullable="false" />
+          <Property Name="source_title" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="icon" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="create_id" Type="Int32" />
+          <Property Name="create_time" Type="Int64" />
+          <Property Name="create_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="modify_time" Type="Int64" />
+          <Property Name="modify_id" Type="Int32" />
+          <Property Name="modify_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="userModelStoreContainer" CdmEntityContainer="userEntities">
+          <EntitySetMapping Name="third_login">
+            <EntityTypeMapping TypeName="userModel.third_login">
+              <MappingFragment StoreEntitySet="third_login">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="share_id" ColumnName="share_id" />
+                <ScalarProperty Name="share_name" ColumnName="share_name" />
+                <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_base">
+            <EntityTypeMapping TypeName="userModel.user_base">
+              <MappingFragment StoreEntitySet="user_base">
+                <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+                <ScalarProperty Name="is_actor" ColumnName="is_actor" />
+                <ScalarProperty Name="user_nick" ColumnName="user_nick" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_pwd" ColumnName="user_pwd" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="reg_time" ColumnName="reg_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_label">
+            <EntityTypeMapping TypeName="userModel.user_label">
+              <MappingFragment StoreEntitySet="user_label">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+                <ScalarProperty Name="label_text" ColumnName="label_text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_relation">
+            <EntityTypeMapping TypeName="userModel.user_relation">
+              <MappingFragment StoreEntitySet="user_relation">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+                <ScalarProperty Name="arter" ColumnName="arter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category">
+            <EntityTypeMapping TypeName="userModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="fc_name" ColumnName="fc_name" />
+                <ScalarProperty Name="fc_id" ColumnName="fc_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_second">
+            <EntityTypeMapping TypeName="userModel.category_second">
+              <MappingFragment StoreEntitySet="category_second">
+                <ScalarProperty Name="fc_id" ColumnName="fc_id" />
+                <ScalarProperty Name="cs_name" ColumnName="cs_name" />
+                <ScalarProperty Name="cs_id" ColumnName="cs_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_third">
+            <EntityTypeMapping TypeName="userModel.category_third">
+              <MappingFragment StoreEntitySet="category_third">
+                <ScalarProperty Name="cs_id" ColumnName="cs_id" />
+                <ScalarProperty Name="ct_name" ColumnName="ct_name" />
+                <ScalarProperty Name="ct_id" ColumnName="ct_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="city">
+            <EntityTypeMapping TypeName="userModel.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="province_id" ColumnName="province_id" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="province">
+            <EntityTypeMapping TypeName="userModel.province">
+              <MappingFragment StoreEntitySet="province">
+                <ScalarProperty Name="province_name" ColumnName="province_name" />
+                <ScalarProperty Name="province_id" ColumnName="province_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cf_label">
+            <EntityTypeMapping TypeName="userModel.cf_label">
+              <MappingFragment StoreEntitySet="cf_label">
+                <ScalarProperty Name="label_text" ColumnName="label_text" />
+                <ScalarProperty Name="cf_id" ColumnName="cf_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="video_label">
+            <EntityTypeMapping TypeName="userModel.video_label">
+              <MappingFragment StoreEntitySet="video_label">
+                <ScalarProperty Name="v_id" ColumnName="v_id" />
+                <ScalarProperty Name="label_text" ColumnName="label_text" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_t">
+            <EntityTypeMapping TypeName="userModel.user_t">
+              <MappingFragment StoreEntitySet="user_t">
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="crowd_fund_relation">
+            <EntityTypeMapping TypeName="userModel.crowd_fund_relation">
+              <MappingFragment StoreEntitySet="crowd_fund_relation">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="cf_id" ColumnName="cf_id" />
+                <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_detail">
+            <EntityTypeMapping TypeName="userModel.user_detail">
+              <MappingFragment StoreEntitySet="user_detail">
+                <ScalarProperty Name="click_count" ColumnName="click_count" />
+                <ScalarProperty Name="user_video" ColumnName="user_video" />
+                <ScalarProperty Name="user_gender" ColumnName="user_gender" />
+                <ScalarProperty Name="user_fronticon" ColumnName="user_fronticon" />
+                <ScalarProperty Name="user_intro" ColumnName="user_intro" />
+                <ScalarProperty Name="user_career" ColumnName="user_career" />
+                <ScalarProperty Name="user_birth" ColumnName="user_birth" />
+                <ScalarProperty Name="user_city_id" ColumnName="user_city_id" />
+                <ScalarProperty Name="user_icon" ColumnName="user_icon" />
+                <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cf_type">
+            <EntityTypeMapping TypeName="userModel.cf_type">
+              <MappingFragment StoreEntitySet="cf_type">
+                <ScalarProperty Name="left_amount" ColumnName="left_amount" />
+                <ScalarProperty Name="cf_desc" ColumnName="cf_desc" />
+                <ScalarProperty Name="cf_amount" ColumnName="cf_amount" />
+                <ScalarProperty Name="cf_cftype" ColumnName="cf_cftype" />
+                <ScalarProperty Name="cf_price" ColumnName="cf_price" />
+                <ScalarProperty Name="cf_type_name" ColumnName="cf_type_name" />
+                <ScalarProperty Name="cf_id" ColumnName="cf_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="video_info">
+            <EntityTypeMapping TypeName="userModel.video_info">
+              <MappingFragment StoreEntitySet="video_info">
+                <ScalarProperty Name="click_count" ColumnName="click_count" />
+                <ScalarProperty Name="v_create_time" ColumnName="v_create_time" />
+                <ScalarProperty Name="v_third_category" ColumnName="v_third_category" />
+                <ScalarProperty Name="v_second_category" ColumnName="v_second_category" />
+                <ScalarProperty Name="v_category" ColumnName="v_category" />
+                <ScalarProperty Name="v_duration" ColumnName="v_duration" />
+                <ScalarProperty Name="v_detail_intro" ColumnName="v_detail_intro" />
+                <ScalarProperty Name="v_brief" ColumnName="v_brief" />
+                <ScalarProperty Name="v_video_url" ColumnName="v_video_url" />
+                <ScalarProperty Name="v_front_icon" ColumnName="v_front_icon" />
+                <ScalarProperty Name="v_title" ColumnName="v_title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="video_relation">
+            <EntityTypeMapping TypeName="userModel.video_relation">
+              <MappingFragment StoreEntitySet="video_relation">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+                <ScalarProperty Name="v_id" ColumnName="v_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="manager_user">
+            <EntityTypeMapping TypeName="userModel.manager_user">
+              <MappingFragment StoreEntitySet="manager_user">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="actor_requst">
+            <EntityTypeMapping TypeName="userModel.actor_requst">
+              <MappingFragment StoreEntitySet="actor_requst">
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="requst_time" ColumnName="requst_time" />
+                <ScalarProperty Name="experience" ColumnName="experience" />
+                <ScalarProperty Name="org" ColumnName="org" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="career" ColumnName="career" />
+                <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="crowd_funding">
+            <EntityTypeMapping TypeName="userModel.crowd_funding">
+              <MappingFragment StoreEntitySet="crowd_funding">
+                <ScalarProperty Name="order_count" ColumnName="order_count" />
+                <ScalarProperty Name="fav_count" ColumnName="fav_count" />
+                <ScalarProperty Name="click_count" ColumnName="click_count" />
+                <ScalarProperty Name="support_amount" ColumnName="support_amount" />
+                <ScalarProperty Name="cf_state" ColumnName="cf_state" />
+                <ScalarProperty Name="cf_service_duration" ColumnName="cf_service_duration" />
+                <ScalarProperty Name="cf_service_time" ColumnName="cf_service_time" />
+                <ScalarProperty Name="cf_service_address" ColumnName="cf_service_address" />
+                <ScalarProperty Name="cf_city_id" ColumnName="cf_city_id" />
+                <ScalarProperty Name="cf_province_id" ColumnName="cf_province_id" />
+                <ScalarProperty Name="cf_owner_id" ColumnName="cf_owner_id" />
+                <ScalarProperty Name="cf_created_time" ColumnName="cf_created_time" />
+                <ScalarProperty Name="cf_note" ColumnName="cf_note" />
+                <ScalarProperty Name="cf_desc" ColumnName="cf_desc" />
+                <ScalarProperty Name="cf_front_icon_type" ColumnName="cf_front_icon_type" />
+                <ScalarProperty Name="cf_video_thumbnail" ColumnName="cf_video_thumbnail" />
+                <ScalarProperty Name="cf_front_icon" ColumnName="cf_front_icon" />
+                <ScalarProperty Name="cf_end_time" ColumnName="cf_end_time" />
+                <ScalarProperty Name="cf_begin_time" ColumnName="cf_begin_time" />
+                <ScalarProperty Name="cf_fund_amount" ColumnName="cf_fund_amount" />
+                <ScalarProperty Name="cf_fund_end" ColumnName="cf_fund_end" />
+                <ScalarProperty Name="cf_third_category" ColumnName="cf_third_category" />
+                <ScalarProperty Name="cf_second_category" ColumnName="cf_second_category" />
+                <ScalarProperty Name="cf_category" ColumnName="cf_category" />
+                <ScalarProperty Name="cf_name" ColumnName="cf_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order">
+            <EntityTypeMapping TypeName="userModel.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="service_endtime" ColumnName="service_endtime" />
+                <ScalarProperty Name="order_img" ColumnName="order_img" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="order_type_sub" ColumnName="order_type_sub" />
+                <ScalarProperty Name="order_type_id" ColumnName="order_type_id" />
+                <ScalarProperty Name="buyer_info" ColumnName="buyer_info" />
+                <ScalarProperty Name="pay_time" ColumnName="pay_time" />
+                <ScalarProperty Name="merchant_code" ColumnName="merchant_code" />
+                <ScalarProperty Name="pay_order_id" ColumnName="pay_order_id" />
+                <ScalarProperty Name="pay_order_type" ColumnName="pay_order_type" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="public_price" ColumnName="public_price" />
+                <ScalarProperty Name="paystatus" ColumnName="paystatus" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="auditer" ColumnName="auditer" />
+                <ScalarProperty Name="audit_time" ColumnName="audit_time" />
+                <ScalarProperty Name="receive_time" ColumnName="receive_time" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="service_location" ColumnName="service_location" />
+                <ScalarProperty Name="service_time" ColumnName="service_time" />
+                <ScalarProperty Name="product_code" ColumnName="product_code" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="order_type" ColumnName="order_type" />
+                <ScalarProperty Name="seller" ColumnName="seller" />
+                <ScalarProperty Name="seller_id" ColumnName="seller_id" />
+                <ScalarProperty Name="buyer" ColumnName="buyer" />
+                <ScalarProperty Name="buyer_id" ColumnName="buyer_id" />
+                <ScalarProperty Name="order_source" ColumnName="order_source" />
+                <ScalarProperty Name="order_code" ColumnName="order_code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="android_update">
+            <EntityTypeMapping TypeName="userModel.android_update">
+              <MappingFragment StoreEntitySet="android_update">
+                <ScalarProperty Name="version_id" ColumnName="version_id" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="update_url" ColumnName="update_url" />
+                <ScalarProperty Name="version_no" ColumnName="version_no" />
+                <ScalarProperty Name="update_intro" ColumnName="update_intro" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recommendation">
+            <EntityTypeMapping TypeName="userModel.recommendation">
+              <MappingFragment StoreEntitySet="recommendation">
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
+                <ScalarProperty Name="modify_name" ColumnName="modify_name" />
+                <ScalarProperty Name="modify_id" ColumnName="modify_id" />
+                <ScalarProperty Name="modify_time" ColumnName="modify_time" />
+                <ScalarProperty Name="create_name" ColumnName="create_name" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="source_title" ColumnName="source_title" />
+                <ScalarProperty Name="source_id" ColumnName="source_id" />
+                <ScalarProperty Name="source_type" ColumnName="source_type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

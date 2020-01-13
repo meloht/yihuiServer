@@ -1,0 +1,25 @@
+﻿<Window x:Class="YihuiMgr.UI.ActorMgr.UpdateActorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YihuiMgr.UI.ActorMgr"
+        xmlns:controls="clr-namespace:YihuiMgr.Controls"
+        mc:Ignorable="d"
+        Title="UpdateActorWindow" Height="600" Width="800">
+    <Grid Background="{ StaticResource ThemeColorBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="视频" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="0"/>
+        <controls:UploadControl x:Name="TextVideo" Grid.Row="0" Grid.Column="1"  UploadType="UserVideoDir"/>
+        <controls:RichTextControl Grid.Column="0" Grid.ColumnSpan="2" x:Name="TextWebHtml" Grid.Row="1"  UploadType="UserImgDir" Style="{ StaticResource InputBox}"/>
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="保存" Click="ButtonBase_OnClick" Width="80" HorizontalAlignment="Right" Margin="8"/>
+    </Grid>
+</Window>

@@ -1,0 +1,78 @@
+﻿<Page x:Class="YihuiMgr.UI.ActorMgr.ActorMgrPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:convert="clr-namespace:YihuiMgr.UI.Convert"
+
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="ActorMgrPage">
+
+    <Page.Resources>
+        <convert:GenderConverter x:Key="GenderConverter"/>
+        <convert:DateTimeConverter x:Key="DateTimeConverter"/>
+
+    </Page.Resources>
+    <Grid Background="{ StaticResource ThemeColorBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="艺人艺名" Grid.Column="0" Style="{ StaticResource InputLabel}" Margin="8,8,0,8"/>
+            <TextBox x:Name="txtActorName" Grid.Column="1" Width="120" Margin="8,8,0,8"/>
+            <TextBlock Text="联系方式" Grid.Column="2" Style="{ StaticResource InputLabel}" Margin="8,8,0,8"/>
+            <TextBox x:Name="txtContact" Grid.Column="3" Width="120" Margin="8,8,0,8"/>
+            <TextBlock Text="性别" Grid.Column="4" Style="{ StaticResource InputLabel}" Margin="8,8,0,8"/>
+            <ComboBox Grid.Column="5" Width="60" Margin="8,8,0,8" x:Name="ComboBoxGender">
+                <ComboBoxItem Content="男"  />
+                <ComboBoxItem Content="女"/>
+            </ComboBox>
+            <Button Content="查询" x:Name="ButtonQurey" Click="ButtonQurey_OnClick" Grid.Column="7" Width="80" HorizontalAlignment="Right" Margin="4" />
+            <Button Content="新增艺人" x:Name="AddBtn" Width="80" Click="AddBtn_Click" Grid.Column="8" Margin="4"/>
+        </Grid>
+
+        <DataGrid x:Name="DataGrid" Grid.Row="2" Margin="8" AutoGenerateColumns="False" HorizontalContentAlignment="Center" CanUserDeleteRows="False" CanUserAddRows="False"  >
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="序号" Width="60" Binding="{Binding Num}" />
+
+                <DataGridTextColumn Header="艺人名称" Width="*" Binding="{Binding ActorName}" />
+                <DataGridTextColumn Header="艺人职业" Width="*" Binding="{Binding ActorCareer}"/>
+                <DataGridTextColumn Header="艺人性别" Width="60" Binding="{Binding ActorGender, Converter={StaticResource GenderConverter}}"/>
+                <DataGridTextColumn Header="联系方式" Width="*" Binding="{Binding ActorContact}"/>
+                <DataGridTextColumn Header="出生年月" Width="*" Binding="{Binding BirthDay,Converter={StaticResource DateTimeConverter}, ConverterParameter='yyyy-MM-dd'}"/>
+                <DataGridTextColumn Header="艺人标签" Width="*" Binding="{Binding ActorTags}"/>
+                <DataGridTextColumn Header="加入日期" Width="*" Binding="{Binding JoinDate,Converter={StaticResource DateTimeConverter}, ConverterParameter='yyyy-MM-dd HH:mm:ss'}"/>
+                <DataGridTemplateColumn Header="操作"  Width="80" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Content="修改介绍" Tag="{Binding Path=Id}"  Click="ButtoncfBase_OnClick" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+
+
+    </Grid>
+</Page>

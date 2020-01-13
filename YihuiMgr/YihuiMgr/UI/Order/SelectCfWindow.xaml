@@ -1,0 +1,72 @@
+﻿<Window x:Class="YihuiMgr.UI.Order.SelectCfWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YihuiMgr.UI.Order"
+        xmlns:controls="clr-namespace:YihuiMgr.Controls"
+        xmlns:convert="clr-namespace:YihuiMgr.UI.Convert"
+        mc:Ignorable="d"
+        Title="SelectCfWindows" Height="300" Width="300">
+    <Window.Resources>
+        <convert:GenderConverter x:Key="GenderConverter"/>
+        <convert:DateTimeConverter x:Key="DateTimeConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="众筹ID" Grid.Column="0" Style="{ StaticResource InputLabel}" Margin="8,8,0,8"/>
+            <TextBox x:Name="TextId" Grid.Column="1" Width="120" Margin="8,8,0,8"/>
+            <TextBlock Text="艺人艺名" Grid.Column="2" Style="{ StaticResource InputLabel}" Margin="8,8,0,8"/>
+            <TextBox x:Name="TextActorName" Grid.Column="3" Width="120" Margin="8,8,0,8"/>
+            <TextBlock Text="艺术类别" Grid.Column="4" Style="{ StaticResource InputLabel}" Margin="8,8,0,8"/>
+
+            <controls:CategoryControl x:Name="ComboBoxCfFirst"  
+                          Style="{StaticResource InputBox}" Grid.Column="5" Width="120" />
+            <Button Content="查询" x:Name="ButtonCfQurey" Click="ButtonCfQurey_OnClick" Grid.Column="7" Width="80" HorizontalAlignment="Right" Margin="4" />
+
+        </Grid>
+        <DataGrid x:Name="CfDataGrid" Grid.Row="1" Margin="8" AutoGenerateColumns="False" HorizontalContentAlignment="Center" CanUserDeleteRows="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="序号" Width="60" Binding="{Binding Num}" />
+
+                <DataGridTextColumn Header="艺术类别" Width="*" Binding="{Binding Category}" />
+                <DataGridTextColumn Header="众筹ID" Width="60" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="众筹名称" Width="*" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="艺人艺名" Width="*" Binding="{Binding ActorName}"/>
+                <DataGridTextColumn Header="开始时间" Width="*" Binding="{Binding BeginTime,Converter={StaticResource DateTimeConverter}}"/>
+                <DataGridTextColumn Header="结束时间" Width="*" Binding="{Binding EndTime,Converter={StaticResource DateTimeConverter}}"/>
+                <DataGridTextColumn Header="所需费用" Width="*" Binding="{Binding FundEnd}"/>
+                <DataGridTextColumn Header="创建日期" Width="*" Binding="{Binding CreatTime,Converter={StaticResource DateTimeConverter}}"/>
+                <DataGridTemplateColumn Header="操作"  Width="80" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Content="选择"  Click="ButtonCfBase_OnClick" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+
+    </Grid>
+</Window>

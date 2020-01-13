@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c35e9851e2604ee798be292c11e1aeb9" Name="Diagram1">
+        <EntityTypeShape EntityType="userModel.third_login" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="userModel.user_base" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="userModel.user_label" Width="1.5" PointX="2" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="userModel.user_relation" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="userModel.category" Width="1.5" PointX="3.25" PointY="7" />
+        <EntityTypeShape EntityType="userModel.category_second" Width="1.5" PointX="5.25" PointY="7" />
+        <EntityTypeShape EntityType="userModel.category_third" Width="1.5" PointX="7.25" PointY="7.125" />
+        <EntityTypeShape EntityType="userModel.city" Width="1.5" PointX="3.875" PointY="9" />
+        <EntityTypeShape EntityType="userModel.province" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="userModel.cf_label" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="userModel.video_label" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="userModel.user_t" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="userModel.crowd_fund_relation" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="userModel.user_detail" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="userModel.cf_type" Width="1.5" PointX="5.375" PointY="11.75" />
+        <EntityTypeShape EntityType="userModel.video_info" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="userModel.video_relation" Width="1.5" PointX="9.625" PointY="7.5" />
+        <EntityTypeShape EntityType="userModel.manager_user" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="userModel.actor_requst" Width="1.5" PointX="13.375" PointY="10.75" />
+        <EntityTypeShape EntityType="userModel.crowd_funding" Width="1.5" PointX="7.75" PointY="9.75" />
+        <EntityTypeShape EntityType="userModel.order" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="userModel.android_update" Width="1.5" PointX="14.375" PointY="3.75" />
+        <EntityTypeShape EntityType="userModel.recommendation" Width="1.5" PointX="10.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

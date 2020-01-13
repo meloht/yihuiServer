@@ -1,0 +1,30 @@
+﻿<Window x:Class="YihuiMgr.UI.CrowFounding.UpdateCrowdWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YihuiMgr.UI.CrowFounding"
+        xmlns:controls="clr-namespace:YihuiMgr.Controls"
+        mc:Ignorable="d"
+        Title="UpdateCrowdWindow" Height="300" Width="300">
+    <Grid Background="{ StaticResource ThemeColorBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="服务介绍" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="0"/>
+        <controls:RichTextControl x:Name="TextServiceIntro" UploadType="CrowdFundImgDir"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Style="{ StaticResource InputBox}"/>
+
+        <TextBlock Text="注意事项" Style="{ StaticResource InputLabel}" Grid.Column="0"  Grid.Row="1"/>
+        <controls:RichTextControl x:Name="TextNote"  Grid.Column="1" Grid.ColumnSpan="3"  Grid.Row="1" UploadType="CrowdFundImgDir"    Style="{StaticResource InputBox}"/>
+
+        <Button Grid.Row="2" Grid.Column="0" Content="保存" Click="ButtonBase_OnClick" Width="80" HorizontalAlignment="Right" Margin="8" Grid.ColumnSpan="4"/>
+    </Grid>
+</Window>
